@@ -1,22 +1,23 @@
-type Lugar={
+
+type Lugar= {
     id:number,
-    nombre:String,
+    nombre:string,
     tipo:string,
     peligro:number
 }
 
 type Personaje={
     id:number,
-    nombre:String,
+    nombre:string,
     fuerza:number,
     aliado:boolean
 }
 
 type Objeto={
     id:number,
-    nombre:String,
+    nombre:string,
     poder:number,
-    categoria:String
+    categoria:string
 }
 
 const lugares: Lugar[] = [
@@ -39,6 +40,7 @@ const objetos: Objeto[] = [
 ];
 
 
+
 const listarLugares =(recorrer:Lugar[]): void =>{
     recorrer.forEach((dato:Lugar)=>{
         console.log(dato.nombre,"(peligro: ",dato.peligro," )")
@@ -58,3 +60,64 @@ const inventarioConFrases =(recorre: Objeto[]): string[] =>{
 }
 
 console.log(inventarioConFrases(objetos));
+=======
+const buscarPersonaje: (nombre: string) => void = (nombre: string): void=> {
+    const resultado: Personaje[] = personajes.filter(
+        (p: Personaje) => p.nombre.toLowerCase() === nombre.toLowerCase()
+    );
+    if (resultado.length===0) {
+        console.log(`No se ha encontrado a "${nombre}". `);
+        return;
+    }
+    resultado.forEach((p: Personaje): void => {
+        const tipo = p.aliado ? "aliado" : "enemigo";
+        console.log(`${p.nombre} tiene una fuerza de: ${p.fuerza} y es un ${tipo}`);
+    });
+    
+};
+
+const agruparObjetosPorCategoria: () => Record<string, number>= (): Record<string, number> => {
+    return objetos.reduce((acumulador,objeto)=>{
+        const categoria= objeto.categoria;
+        if (!acumulador[categoria]) {
+            acumulador[categoria] = 0;
+        }
+        acumulador[categoria] += objeto.poder;
+        return acumulador;
+    }, {} as Record<string,number>);
+
+};
+
+
+const poderTotalInventario= (): number => {
+    return objetos.reduce((total,objeto)=> {
+        return total + objeto.poder;
+    },0 );
+};
+
+
+const main = (): void => {
+  const opcion: number = 3; // Cambia este número para probar
+ 
+  switch (opcion) {
+    case 1:
+      listarLugares();
+      break;
+    case 2:
+      const nombreBuscado = "Sabio"; // Cambia el nombre para probar
+      buscarPersonaje(nombreBuscado);
+      break;
+    case 3:
+      console.log(inventarioConFrases());
+      break;
+    case 4:
+      console.log(agruparObjetosPorCategoria());
+      break;
+    case 5:
+      console.log("Poder total:", poderTotalInventario());
+      break;
+    default:
+      console.log("Opción no válida.");
+  }
+};
+main();
