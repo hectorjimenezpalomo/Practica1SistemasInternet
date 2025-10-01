@@ -46,7 +46,15 @@ const listarLugares =(recorrer:Lugar[]): void =>{
 
 }
 
-console.log(listarLugares(lugares))
+//console.log(listarLugares(lugares))
 
+const inventarioConFrases =(recorre: Objeto[]): string[] =>{
+    const arraydeStrings:string[] = recorre.map((dato: Objeto)=>{
+            return(dato.nombre+ "(+"+dato.poder+" poder "+"categoria: "+dato.categoria+")")
+    })
 
+    return arraydeStrings;
 
+}
+
+console.log(inventarioConFrases(objetos));
