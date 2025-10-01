@@ -53,9 +53,6 @@ const buscarPersonaje: (nombre: string) => void = (nombre: string): void=> {
     
 };
 
-console.log(buscarPersonaje("juan"))
-console.log(buscarPersonaje("Sabio"))
-
 const agruparObjetosPorCategoria: () => Record<string, number>= (): Record<string, number> => {
     return objetos.reduce((acumulador,objeto)=>{
         const categoria= objeto.categoria;
@@ -68,7 +65,6 @@ const agruparObjetosPorCategoria: () => Record<string, number>= (): Record<strin
 
 };
 
-console.log(agruparObjetosPorCategoria())
 
 const poderTotalInventario= (): number => {
     return objetos.reduce((total,objeto)=> {
@@ -76,4 +72,29 @@ const poderTotalInventario= (): number => {
     },0 );
 };
 
-console.log(poderTotalInventario())
+
+const main = (): void => {
+  const opcion: number = 3; // Cambia este número para probar
+ 
+  switch (opcion) {
+    case 1:
+      listarLugares();
+      break;
+    case 2:
+      const nombreBuscado = "Sabio"; // Cambia el nombre para probar
+      buscarPersonaje(nombreBuscado);
+      break;
+    case 3:
+      console.log(inventarioConFrases());
+      break;
+    case 4:
+      console.log(agruparObjetosPorCategoria());
+      break;
+    case 5:
+      console.log("Poder total:", poderTotalInventario());
+      break;
+    default:
+      console.log("Opción no válida.");
+  }
+};
+main();
