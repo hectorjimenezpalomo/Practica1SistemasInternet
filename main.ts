@@ -69,3 +69,11 @@ const agruparObjetosPorCategoria: () => Record<string, number>= (): Record<strin
 };
 
 console.log(agruparObjetosPorCategoria())
+
+const poderTotalInventario= (): number => {
+    return objetos.reduce((total,objeto)=> {
+        return total + objeto.poder;
+    },0 );
+};
+
+console.log(poderTotalInventario())
