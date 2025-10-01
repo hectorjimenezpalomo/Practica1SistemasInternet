@@ -55,3 +55,17 @@ const buscarPersonaje: (nombre: string) => void = (nombre: string): void=> {
 
 console.log(buscarPersonaje("juan"))
 console.log(buscarPersonaje("Sabio"))
+
+const agruparObjetosPorCategoria: () => Record<string, number>= (): Record<string, number> => {
+    return objetos.reduce((acumulador,objeto)=>{
+        const categoria= objeto.categoria;
+        if (!acumulador[categoria]) {
+            acumulador[categoria] = 0;
+        }
+        acumulador[categoria] += objeto.poder;
+        return acumulador;
+    }, {} as Record<string,number>);
+
+};
+
+console.log(agruparObjetosPorCategoria())
