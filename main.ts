@@ -52,15 +52,14 @@ const listarLugares =(recorrer:Lugar[]): void =>{
 
 const inventarioConFrases =(recorre: Objeto[]): string[] =>{
     const arraydeStrings:string[] = recorre.map((dato: Objeto)=>{
-            return(dato.nombre+ "(+"+dato.poder+" poder "+"categoria: "+dato.categoria+")")
+            return(dato.nombre+ "(+"+dato.poder+" poder, "+"categoria: "+dato.categoria+")")
     })
 
     return arraydeStrings;
 
 }
 
-console.log(inventarioConFrases(objetos));
-=======
+
 const buscarPersonaje: (nombre: string) => void = (nombre: string): void=> {
     const resultado: Personaje[] = personajes.filter(
         (p: Personaje) => p.nombre.toLowerCase() === nombre.toLowerCase()
@@ -97,18 +96,18 @@ const poderTotalInventario= (): number => {
 
 
 const main = (): void => {
-  const opcion: number = 3; // Cambia este número para probar
+  const opcion: number = 6; // Cambia este número para probar
  
   switch (opcion) {
     case 1:
-      listarLugares();
+      listarLugares(lugares);
       break;
     case 2:
-      const nombreBuscado = "Sabio"; // Cambia el nombre para probar
+      const nombreBuscado = "Sabi"; // Cambia el nombre para probar
       buscarPersonaje(nombreBuscado);
       break;
     case 3:
-      console.log(inventarioConFrases());
+      console.log(inventarioConFrases(objetos));
       break;
     case 4:
       console.log(agruparObjetosPorCategoria());
