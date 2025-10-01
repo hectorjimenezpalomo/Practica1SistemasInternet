@@ -1,3 +1,4 @@
+
 type Lugar= {
     id:number,
     nombre:string,
@@ -38,6 +39,28 @@ const objetos: Objeto[] = [
   { id: 4, nombre: "Escudo", poder: 4, categoria: "arma" }
 ];
 
+
+
+const listarLugares =(recorrer:Lugar[]): void =>{
+    recorrer.forEach((dato:Lugar)=>{
+        console.log(dato.nombre,"(peligro: ",dato.peligro," )")
+    })
+
+}
+
+//console.log(listarLugares(lugares))
+
+const inventarioConFrases =(recorre: Objeto[]): string[] =>{
+    const arraydeStrings:string[] = recorre.map((dato: Objeto)=>{
+            return(dato.nombre+ "(+"+dato.poder+" poder "+"categoria: "+dato.categoria+")")
+    })
+
+    return arraydeStrings;
+
+}
+
+console.log(inventarioConFrases(objetos));
+=======
 const buscarPersonaje: (nombre: string) => void = (nombre: string): void=> {
     const resultado: Personaje[] = personajes.filter(
         (p: Personaje) => p.nombre.toLowerCase() === nombre.toLowerCase()
